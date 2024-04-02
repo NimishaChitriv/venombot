@@ -1,0 +1,8 @@
+prefix=/home/nimisha/catkin_ws/devel
+
+Name: adhic4_description
+Description: Description of adhic4_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

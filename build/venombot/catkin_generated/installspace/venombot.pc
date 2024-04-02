@@ -1,0 +1,8 @@
+prefix=/home/nimisha/catkin_ws/install
+
+Name: venombot
+Description: Description of venombot
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

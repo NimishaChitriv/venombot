@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<launch>
+<param name="robot_description" command="$(find xacro)/xacro $(find adhic4_description)/urdf/adhic4.xacro"/>
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model ADHIC_MK1"/>
+  <include file="$(find adhic4_description)/launch/view_hospital.launch">
+  </include>
+
+<arg name="model" default="$(find adhic4_description)/urdf/adhic4.xacro"/>
+  <arg name="gui" default="true"/>
+  <arg name="rvizconfig" default="$(find adhic4_description)/launch/urdf.rviz"/>
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
+  <param name="use_gui" value="$(arg gui)"/>
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <param name="tf_prefix" type="string" value="" />
+</node>
+    
+<node name="joint_state_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn joint_state_controller" respawn="false" output="screen"/>
+  <node name="rviz" pkg="rviz" args="-d $(arg rvizconfig)" type="rviz" required="true"/>
+
+
+<node pkg="move_base" type="move_base" name="Base_move" output="screen">
+        <param name="controller_frequency" value="10.0" />
+        <rosparam file="$(find adhic4_description)/config/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+        <rosparam file="$(find adhic4_description)/config/costmap_common_params.yaml" command="load" ns="local_costmap"/>
+        <rosparam file="$(find adhic4_description)/config/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find adhic4_description)/config/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find adhic4_description)/config/trajectory_planner.yaml" command="load" />
+      </node>
+
+<include file="$(find ur5_movit_hola4)/launch/ur5_bringup_moveit.launch"></include>
+
+</launch>

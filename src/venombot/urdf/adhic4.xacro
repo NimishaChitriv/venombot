@@ -1,0 +1,408 @@
+<?xml version="1.0" ?>
+<robot name="adhic4" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find adhic4_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find adhic4_description)/urdf/adhic4.trans" />
+<xacro:include filename="$(find adhic4_description)/urdf/adhic4.gazebo" />
+<link name="base_footprint"></link>
+<link name="hbot_base">
+  <inertial>
+    <origin xyz="0.018156704502869988 -0.0074033581631362325 0.18794645946750038" rpy="0 0 0"/>
+    <mass value="208.37705429986153"/>
+    <inertia ixx="7.371857" iyy="7.368891" izz="13.35531" ixy="-0.00061" iyz="-4.5e-05" ixz="-0.000131"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0.22" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/base_link.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0.22" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/base_link.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+  </collision>
+</link>
+<joint name="j1" type="fixed">
+  <parent link="base_footprint"/>
+  <child link="hbot_base"/>
+</joint>
+<link name="front_wheel_1">
+  <inertial>
+    <origin xyz="0.030000153152309306 4.022506844893539e-06 -3.814697197013217e-09" rpy="0 0 0"/>
+    <mass value="30.68285473973862"/>
+    <inertia ixx="0.31812" iyy="0.168265" izz="0.168265" ixy="2e-05" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.426061 0.007854 0.075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/front_wheel_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!-- <light name='lamp' type='spot'>
+  </light> -->
+  <collision>
+    <origin xyz="-0.426061 0.007854 0.075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/front_wheel_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="-0.0149998607647496 0.025980765634774194 -3.814698668058725e-09" rpy="0 0 0"/>
+    <mass value="30.68285473973862"/>
+    <inertia ixx="0.205729" iyy="0.280656" izz="0.168265" ixy="-0.064889" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.185829 -0.345941 0.075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/left_wheel_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.185829 -0.345941 0.075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/left_wheel_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="-0.014994788089180644 -0.025983621299543846 -3.814697280279944e-09" rpy="0 0 0"/>
+    <mass value="30.682854739738648"/>
+    <inertia ixx="0.205703" iyy="0.280682" izz="0.168265" ixy="0.064874" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.186434 0.360531 0.075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/right_wheel_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.186434 0.360531 0.075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/right_wheel_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1_1">
+  <inertial>
+    <origin xyz="1.5554700822859036e-07 -3.886178115870831e-07 0.02380807279672631" rpy="0 0 0"/>
+    <mass value="10.797829000846852"/>
+    <inertia ixx="0.026687" iyy="0.026687" izz="0.049282" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.018171 0.007397 -0.129" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/lidar_1_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.018171 0.007397 -0.129" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/lidar_1_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="hbot_base_up">
+  <inertial>
+    <origin xyz="0.018156704502869988 -0.0074033581631362325 0.18794645946750038" rpy="0 0 0"/>
+    <mass value="208.37705429986153"/>
+    <inertia ixx="7.371857" iyy="7.368891" izz="13.35531" ixy="-0.00061" iyz="-4.5e-05" ixz="-0.000131"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0.22" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/base_link.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0.22" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/base_link.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="display">
+  
+  <visual>
+      <geometry>
+          <box size="0.15 0.3 0.01"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+    </material>
+  </visual>
+  
+
+  <collision>
+      <geometry>
+          <box size="0.1 0.1 0.1"/>
+      </geometry>
+  </collision>
+
+  <inertial>
+      <mass value="20"/>
+      <inertia ixx="0.268256" ixy="0" ixz="0.0" iyy="0.533312" iyz="0.0" izz="0.268256"/>
+  </inertial>
+</link>
+
+<joint name="laser_scanner_joint" type="fixed">
+  <axis xyz="0.0 1 0.0"/>
+  <parent link="hbot_base_up"/>
+  <child link="display"/>
+  <origin xyz="0.16 0.0 0.22" rpy="0.0 0.5 0.0"/>
+</joint>
+
+<joint name="fixed55" type="fixed">
+  <origin xyz="0.0 0.0 0.2" rpy="0 0 0"/>
+  <parent link="hbot_base"/>
+  <child link="hbot_base_up"/>
+  <axis xyz="1.0 0.000132 0.0"/>
+</joint>
+
+<joint name="Revolute1" type="continuous">
+  <origin xyz="0.426061 -0.007854 0.145" rpy="0 0 0"/>
+  <parent link="hbot_base"/>
+  <child link="front_wheel_1"/>
+  <axis xyz="1.0 0.000132 0.0"/>
+</joint>
+
+<joint name="Revolute2" type="continuous">
+  <origin xyz="-0.185829 0.345941 0.145" rpy="0 0 0"/>
+  <parent link="hbot_base"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="-0.5 0.866025 0.0"/>
+</joint>
+
+<joint name="Revolute3" type="continuous">
+  <origin xyz="-0.186434 -0.360531 0.145" rpy="0 0 0"/>
+  <parent link="hbot_base"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="-0.499827 -0.866126 0.0"/>
+</joint>
+
+<joint name="Rigid 4" type="fixed">
+  <origin xyz="0.018171 -0.007397 0.349" rpy="0 0 0"/>
+  <parent link="hbot_base"/>
+  <child link="lidar_1_1"/>
+</joint>
+
+<xacro:ur5_robot prefix="" joint_limited="false"/>
+<joint name="ebot_joint" type="fixed">
+  <parent link="hbot_base" />
+  <child link = "base_link" />
+  <origin xyz="0.0 0 0.45" rpy="0.0 0.0 0" />
+</joint>
+
+<xacro:robotiq_85_gripper prefix="" parent="wrist_3_link" >
+  <origin xyz="0 0.08 0" rpy="0 0 ${pi/2}"/>
+</xacro:robotiq_85_gripper>  
+
+
+
+<joint name="intelrealsense2" type="fixed">
+  <axis xyz="0 0 0" />
+  <origin xyz="0 0.25 -0.08" rpy="3.14 0 1.57"/>
+  <parent link="wrist_3_link"/>
+  <child link="camera_link2"/>
+</joint>
+<link name="camera_link2">
+  <collision>
+    <origin xyz="0.02 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+
+  <visual>
+    <origin xyz="0 0 0" rpy="1.5707 0 1.5707"/>
+    <geometry>
+       <mesh filename="package://eyrc-2022_krishibot/meshes/NAVRS.STL" />
+    </geometry>
+  </visual>
+
+  <inertial>
+    <mass value="1e-5" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+  </inertial>
+</link>
+<joint name="camera_optical_joint2" type="fixed">
+  <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+  <parent link="camera_link2"/>
+  <child link="camera_rgb_frame2"/>
+</joint>
+
+<link name="camera_rgb_frame2">
+</link>
+
+<joint name="camera_depth_joint2" type="fixed">
+  <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+  <parent link="camera_link2"/>
+  <child link="camera_depth_frame2"/>
+</joint>
+
+  <link name="camera_depth_frame2">
+</link>
+
+<joint name="base_camera" type="fixed">
+  <axis xyz="0 0 0" />
+  <origin xyz="0.22 0 0.05" rpy="6.28 -0.2 -6.28"/>
+  <parent link="lidar_1_1"/>
+  <child link="base_camera_link"/>
+</joint>
+<link name="base_camera_link">
+  <collision>
+    <origin xyz="0.02 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+
+  <visual>
+    <origin xyz="0 0 0" rpy="1.5707 0 1.5707"/>
+    <geometry>
+       <mesh filename="package://eyrc-2022_krishibot/meshes/NAVRS.STL" />
+    </geometry>
+  </visual>
+
+  <inertial>
+    <mass value="1e-5" />
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+  </inertial>
+</link>
+<joint name="base_camera_optical_joint" type="fixed">
+  <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+  <parent link="base_camera_link"/>
+  <child link="base_camera_rgb_frame"/>
+</joint>
+
+<link name="base_camera_rgb_frame">
+</link>
+
+<joint name="base_camera_depth_joint" type="fixed">
+  <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+  <parent link="base_camera_link"/>
+  <child link="base_camera_depth_frame"/>
+</joint>
+
+  <link name="base_camera_depth_frame">
+</link>
+
+<!-- <gazebo reference="camera_link2">
+  <sensor type="depth" name="intelrealsense2">
+    <always_on>1</always_on>
+    <visualize>true</visualize>
+    <camera>
+      <horizontal_fov>1.047</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <depth_camera>
+
+      </depth_camera>
+      <clip>
+        <near>0.1</near>
+        <far>100</far>
+      </clip>
+    </camera>
+    <plugin name="intelrealsense" filename="libgazebo_ros_openni_kinect.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>10.0</updateRate>
+      <cameraName>camera2</cameraName>
+      <frameName>camera_depth_frame2</frameName>
+      <imageTopicName>/camera/color/image_raw2</imageTopicName>
+      <depthImageTopicName>/camera/depth/image_raw2</depthImageTopicName>
+      <pointCloudTopicName>depth/points2</pointCloudTopicName>
+      <cameraInfoTopicName>/camera/color/camera_info2</cameraInfoTopicName>
+      <depthImageCameraInfoTopicName>/camera/depth/camera_info2</depthImageCameraInfoTopicName>
+       <pointCloudCutoff>0.2</pointCloudCutoff>
+       <pointCloudCutoffMax>10.0</pointCloudCutoffMax>
+      <hackBaseline>0.07</hackBaseline>
+      <distortionK1>0.0</distortionK1>
+      <distortionK2>0.0</distortionK2>
+      <distortionK3>0.0</distortionK3>
+      <distortionT1>0.0</distortionT1>
+      <distortionT2>0.0</distortionT2>
+      <CxPrime>0.0</CxPrime>
+      <Cx>0.0</Cx>
+      <Cy>0.0</Cy>
+      <focalLength>0.0</focalLength>
+    </plugin>
+  </sensor>
+</gazebo> -->
+
+<!-- <gazebo>
+  <plugin name='light_control' filename='libLedPlugin.so'>
+    <light>
+      <light>front_wheel_1/lamp</light>
+      <duration>0.5</duration>
+      <interval>0.5</interval>
+    </light>
+  
+  </plugin>
+</gazebo> -->
+
+<gazebo reference="base_camera_link">
+  <sensor type="depth" name="intelrealsense1">
+    <always_on>1</always_on>
+    <visualize>true</visualize>
+    <camera>
+      <horizontal_fov>1.047</horizontal_fov>
+      <image>
+        <width>640</width>
+        <height>480</height>
+        <format>R8G8B8</format>
+      </image>
+      <depth_camera>
+
+      </depth_camera>
+      <clip>
+        <near>0.1</near>
+        <far>100</far>
+      </clip>
+    </camera>
+    <plugin name="intelrealsense1" filename="libgazebo_ros_openni_kinect.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>10.0</updateRate>
+      <cameraName>base_camera</cameraName>
+      <frameName>base_camera_depth_frame</frameName>
+      <imageTopicName>/camera1/color/image_raw1</imageTopicName>
+      <depthImageTopicName>/camera1/depth/image_raw1</depthImageTopicName>
+      <pointCloudTopicName>depth1/points1</pointCloudTopicName>
+      <cameraInfoTopicName>/camera1/color/camera_info1</cameraInfoTopicName>
+      <depthImageCameraInfoTopicName>/camera1/depth/camera_info1</depthImageCameraInfoTopicName>
+       <pointCloudCutoff>0.2</pointCloudCutoff>
+       <pointCloudCutoffMax>10.0</pointCloudCutoffMax>
+      <hackBaseline>0.07</hackBaseline>
+      <distortionK1>0.0</distortionK1>
+      <distortionK2>0.0</distortionK2>
+      <distortionK3>0.0</distortionK3>
+      <distortionT1>0.0</distortionT1>
+      <distortionT2>0.0</distortionT2>
+      <CxPrime>0.0</CxPrime>
+      <Cx>0.0</Cx>
+      <Cy>0.0</Cy>
+      <focalLength>0.0</focalLength>
+    </plugin>
+  </sensor>
+</gazebo>
+
+</robot>

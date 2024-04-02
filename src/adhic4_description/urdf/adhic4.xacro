@@ -1,0 +1,149 @@
+<?xml version="1.0" ?>
+<robot name="adhic4" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find adhic4_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find adhic4_description)/urdf/adhic4.trans" />
+<xacro:include filename="$(find adhic4_description)/urdf/adhic4.gazebo" />
+<link name="base_footprint"></link>
+<link name="hbot_base">
+  <inertial>
+    <origin xyz="0.018156704502869988 -0.0074033581631362325 0.18794645946750038" rpy="0 0 0"/>
+    <mass value="208.37705429986153"/>
+    <inertia ixx="7.371857" iyy="7.368891" izz="13.35531" ixy="-0.00061" iyz="-4.5e-05" ixz="-0.000131"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0.22" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/base_link.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0.22" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/base_link.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+  </collision>
+</link>
+<joint name="j1" type="fixed">
+  <parent link="base_footprint"/>
+  <child link="hbot_base"/>
+</joint>
+<link name="front_wheel_1">
+  <inertial>
+    <origin xyz="0.030000153152309306 4.022506844893539e-06 -3.814697197013217e-09" rpy="0 0 0"/>
+    <mass value="30.68285473973862"/>
+    <inertia ixx="0.31812" iyy="0.168265" izz="0.168265" ixy="2e-05" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.426061 0.007854 0.075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/front_wheel_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!-- <light name='lamp' type='spot'>
+  </light> -->
+  <collision>
+    <origin xyz="-0.426061 0.007854 0.075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/front_wheel_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="-0.0149998607647496 0.025980765634774194 -3.814698668058725e-09" rpy="0 0 0"/>
+    <mass value="30.68285473973862"/>
+    <inertia ixx="0.205729" iyy="0.280656" izz="0.168265" ixy="-0.064889" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.185829 -0.345941 0.075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/left_wheel_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.185829 -0.345941 0.075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/left_wheel_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="-0.014994788089180644 -0.025983621299543846 -3.814697280279944e-09" rpy="0 0 0"/>
+    <mass value="30.682854739738648"/>
+    <inertia ixx="0.205703" iyy="0.280682" izz="0.168265" ixy="0.064874" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.186434 0.360531 0.075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/right_wheel_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.186434 0.360531 0.075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/right_wheel_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1_1">
+  <inertial>
+    <origin xyz="1.5554700822859036e-07 -3.886178115870831e-07 0.02380807279672631" rpy="0 0 0"/>
+    <mass value="10.797829000846852"/>
+    <inertia ixx="0.026687" iyy="0.026687" izz="0.049282" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.018171 0.007397 -0.129" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/lidar_1_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.018171 0.007397 -0.129" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://adhic4_description/meshes/lidar_1_1.stl" scale="0.0005 0.0005 0.0005"/>
+    </geometry>
+  </collision>
+</link>
+
+
+<joint name="Revolute1" type="continuous">
+  <origin xyz="0.426061 -0.007854 0.145" rpy="0 0 0"/>
+  <parent link="hbot_base"/>
+  <child link="front_wheel_1"/>
+  <axis xyz="1.0 0.000132 0.0"/>
+</joint>
+
+<joint name="Revolute2" type="continuous">
+  <origin xyz="-0.185829 0.345941 0.145" rpy="0 0 0"/>
+  <parent link="hbot_base"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="-0.5 0.866025 0.0"/>
+</joint>
+
+<joint name="Revolute3" type="continuous">
+  <origin xyz="-0.186434 -0.360531 0.145" rpy="0 0 0"/>
+  <parent link="hbot_base"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="-0.499827 -0.866126 0.0"/>
+</joint>
+
+<joint name="Rigid 4" type="fixed">
+  <origin xyz="0.018171 -0.007397 0.349" rpy="0 0 0"/>
+  <parent link="hbot_base"/>
+  <child link="lidar_1_1"/>
+</joint>
+
+
+
+
+</robot>
